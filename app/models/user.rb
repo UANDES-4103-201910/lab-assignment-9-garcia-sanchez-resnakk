@@ -8,7 +8,7 @@ class User < ApplicationRecord
   validates :password, format: {with: /\A[a-zA-Z0-9\.]{8,12}\z/ , message: "assword must be between 8 to 12 alphanumeric characters"}
   devise :database_authenticatable, :registerable, :recoverable,
   			:rememberable, :trackable, :validatable, :omniauthable,
-  			:omniauth_provides => [:facebook]
+  			:omniauth_providers => [:facebook]
 
 
   	def self.from_omniauth(auth)
