@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+  <div class="row" style="margin-top: 45px"> 
+    <div class="col-md-7 offset-1">
  <%= form_for(:session, url: log_in_path) do |f| %>
   <div class="form-group">
     <%= f.label :email,"Email" %><br />
@@ -10,7 +19,14 @@
   </div>
   <div class="actions">
     <%= f.submit "Log In" %>
+<button type="button" class="btn btn-info">Facebook</button>
   </div>
   <br>
 <% end %>
-<%= link_to 'Sign In', registrations_path %>
+    </div>
+</div>
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+</body>
+</html>
+
