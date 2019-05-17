@@ -5,10 +5,12 @@ class User < ApplicationRecord
 	validates :email, presence: true, format: {with: /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/}, uniqueness: true
 
 	validates :phone, length: {minimum: 9, maximum: 12}, allow_blank: true
-  	validates :password, format: {with: /\A[a-zA-Z0-9\.]{8,12}\z/ , message: "assword must be between 8 to 12 alphanumeric characters"}
-  	devise :database_authenticatable, :registerable, :recoverable,
+  validates :password, format: {with: /\A[a-zA-Z0-9\.]{8,12}\z/ , message: "assword must be between 8 to 12 alphanumeric characters"}
+  devise :database_authenticatable, :registerable, :recoverable,
   			:rememberable, :trackable, :validatable, :omniauthable,
-  			:omniauthable_provides => [:facebook] 
+  			:omniauth_provides => [:facebook]
+
+
   	def self.from_omniauth(auth)
   		where(provider:auth.provider , uid:auth.uid).first_or_create do |user|
   			user.provider = auth.provider
