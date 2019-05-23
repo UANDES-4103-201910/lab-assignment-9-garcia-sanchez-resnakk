@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :models
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users
+  resources :tickets
 
   root :to => 'sessions#new'
 
@@ -10,5 +11,8 @@ Rails.application.routes.draw do
 
   get '/sign_in' => 'registrations#new', as: :registrations
   post '/sign_in' => 'registrations#create', as: :sign_in
+
+  get '/main' => 'ticket#index', as: :ticket_main
+
 
 end
