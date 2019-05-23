@@ -4,12 +4,12 @@
 
 </head>
 <body>
-  
+
   <div class="row" style="margin-top: 45px"> 
     <div class="col-md-7 offset-1">
  <%= form_for(:session, url: log_in_path) do |f| %>
   <div class="form-group">
-    <%= f.label :email,"Email" %><br />
+    <%= f.label :email,"Email" %><br/>
     <%= f.email_field :email, autofocus: true  %>
   </div>
 
@@ -18,7 +18,7 @@
     <%= f.password_field :password, autocomplete: "off"  %>
   </div>
   <div class="actions">
-    <%= f.submit "Log In" %>
+    <%= f.submit "Log In" ,class: "btn btn-dark"%>
   </div>
   <br>
 <% end %>
