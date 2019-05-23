@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 			flash[:notice] = "Session Initied"
 			#log_in user 
 			session[:user_id] = user.id
-			redirect_to user
+			redirect_to tickets_url
 		else
 			flash[:error] = "There was a problem authenting!"
 			render action: 'new'
