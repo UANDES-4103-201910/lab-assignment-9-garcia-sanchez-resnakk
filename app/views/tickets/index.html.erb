@@ -6,10 +6,48 @@
 <body>
 
   <div class="row" style="margin-top: 45px"> 
-    <div class="col-md-7 offset-1">
-      <h2>-HOla, pa tii mi cola</h2>
-      
-    </div>
+    <div class="col-md-4 offset-1">
+      <h2>Upcoming Events:</h2>
+      <% @events.each do |f| %>
+        <div class="row">
+          <div style=""><%= f.name  %></div>
+        </div>
+
+        <div class="row">
+          <div class=" col-md-5">
+            <h2 class = " btn btn-outline-light active" ><%= f.description %></h2>
+            <div class="row">
+            
+            <h4>Available Tickets:</h4>
+            <% @tickets.each do |t| %>
+              <% if (f.id== t.event_id) %>
+                <h2 class = " btn btn-outline-light active" ><%= link_to t.price, t %></h2>
+              <% end %>
+            <%end%> 
+            </div>
+          </div>
+        </div>
+
+        <hr/>
+          
+      <%end%>
+      </div>
+      <div class="col-md-5 ">
+      <h2>USUARIOS</h2>
+      <% @users.each do |u| %>
+        <div class="row">
+          <div class = "btn btn-outline-light active"><%= link_to u.name + " "+ u.last_name, u %></div>
+          <%= u.email %>
+          </div>
+
+        <div class="row">
+        </div>
+          
+
+
+      <%end%>
+      </div>
+    
   </div>
 
 </body>
