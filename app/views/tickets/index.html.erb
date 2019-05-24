@@ -4,13 +4,17 @@
 
 </head>
 <body>
-
   <div class="row" style="margin-top: 45px"> 
     <div class="col-md-5 offset-1">
       <h2>Upcoming Events:</h2>
-      <% @events.each do |f| %>
+      
+      <p id="caca"></p>
+
+
+      <div class="row" style="margin-top:10px"></div>
+      <% @events.each do |f| %> 
         <div class="row">
-          <div style=""><%= f.name  %></div>
+          <div style="font-size: 25px"><%= f.name  %></div>
         </div>
 
         <div class="row">
@@ -19,11 +23,23 @@
             <div class="row">
             
             <h4>Available Tickets:</h4>
+            <var></var>
             <% @tickets.each do |t| %>
               <% if (f.id== t.event_id) %>
-                <h2 class = " btn btn-outline-light active" ><%= link_to t.price, t %></h2>
+                <input type="checkbox" ><%= t.price %></h2>
               <% end %>
             <%end%> 
+  <script >
+
+     var total = 0;
+     var elements = getElementsByType("checkbox");
+
+     for (var i = 0; i < elements.length; i++) {
+       total += elements[i]
+     }
+
+     document.getElementById("caca").innerHTML = 4 + 6;
+  </script>
             </div>
           </div>
         </div>
@@ -36,7 +52,7 @@
       <h2>USUARIOS</h2>
       <% @users.each do |u| %>
         <div class="row">
-          <div class = "btn btn-outline-light active"><%= link_to u.name + " "+ u.last_name, u %></div>
+          <div class = "btn btn-outline-light active"><%= link_to u.name, u %></div>
           <%= u.email %>
           </div>
 

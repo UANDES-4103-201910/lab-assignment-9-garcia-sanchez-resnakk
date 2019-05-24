@@ -3,70 +3,21 @@
   <head>
     <title>Lab4Assignment</title>
     <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
-
-
-  <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '381886355758326',
-      cookie     : true,
-      xfbml      : true,
-      version    : 'v3.3'
-    });
-      
-    FB.AppEvents.logPageView();   
-      
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-
-</script>
-<script>
-  function checkLoginState() {
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-}
-</script>
   </head>
 
   <body>
-    <% flash.each do |type, message| %>
-    <div class="alert <%= bootstrap_class_for(type) %> alert-dismissible" role="error" style = "margin-top: 35px">
-      <%= message %>
-    </div>
-    <% end %>
-  	
+    <nav class="navbar">
+      
+        <button>Log in</button>
+        <button><%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path %></button>
+      
+    </nav>
+  	<p id="notice"><%= notice %></p>
     <%= yield %>
 
-   <ul class="nav navbar-expand-md navbar-light nav justify-content-end bg-light fixed-top">
-  <li class="nav-item">
-    <a class="nav-link" href="/sign_in">Sign In</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href= '/'>Log In</a>
-  </li>
-  
-</ul>
-
- 
-
-  
+    
   </body>
-
-
-
 </html>

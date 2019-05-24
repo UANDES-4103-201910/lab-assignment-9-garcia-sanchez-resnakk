@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
-  devise_for :models
+  devise_for :users, controllers: { omniauth_callbacks: 'callbacks' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users
-  resources :tickets
 
-  root :to => 'sessions#new'
+  root :to => 'tickets#index'
 
   post '/login',   to: 'sessions#create', as: :log_in
   delete '/log_out' => 'sessions#destroy', as: :log_out
@@ -12,7 +11,6 @@ Rails.application.routes.draw do
   get '/sign_in' => 'registrations#new', as: :registrations
   post '/sign_in' => 'registrations#create', as: :sign_in
 
-  get '/main' => 'ticket#index', as: :ticket_main
-
+  get '/main' => 'ticket#index', as: :ticket
 
 end
